@@ -1,9 +1,5 @@
 ﻿using NHibernate;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using NHibernate.Util;
 using utnfrsf.ds.orms.Entidades;
 
 namespace utnfrsf.ds.orms.Services
@@ -33,6 +29,7 @@ namespace utnfrsf.ds.orms.Services
         public Usuario CreateUsuario(Usuario user)
         {
             user.Rol = session.Get<Rol>(user.Rol.Id);
+            //user.Domicilios.ForEach(f => { f.Usuario = user; });
             session.Save(user);
             session.Flush();
 

@@ -1,16 +1,10 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Internal;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using utnfrsf.ds.orms.EFCore;
 using utnfrsf.ds.orms.Entidades;
 
 namespace utnfrsf.ds.orms.Services
 {
-    public class EFService: IService
+    public class EFService : IService
     {
 
         private EFDbContext _dbContext;
@@ -20,7 +14,7 @@ namespace utnfrsf.ds.orms.Services
             _dbContext = dbContext;
         }
 
-        public  IList<Rol> GetAllRoles()
+        public IList<Rol> GetAllRoles()
         {
 
             return (from r in _dbContext.Roles
@@ -28,14 +22,14 @@ namespace utnfrsf.ds.orms.Services
 
         }
 
-        public  Rol GetRol(int rolId)
+        public Rol GetRol(int rolId)
         {
             return (from r in _dbContext.Roles
                     where r.Id == rolId
                     select r).FirstOrDefault();
         }
 
-        public  Usuario CreateUsuario(Usuario user)
+        public Usuario CreateUsuario(Usuario user)
         {
 
             user.Rol = _dbContext.Roles.FirstOrDefault(r => r.Id == user.Rol.Id);
@@ -45,7 +39,7 @@ namespace utnfrsf.ds.orms.Services
 
         }
 
-        public  Usuario GetUsuario(int id)
+        public Usuario GetUsuario(int id)
         {
             return (from u in _dbContext.Usuarios.Include(u => u.Domicilios).Include(u => u.Rol)
                     where u.Id == id
@@ -53,7 +47,7 @@ namespace utnfrsf.ds.orms.Services
 
         }
 
-        public  Usuario UpdateUsuario(Usuario user)
+        public Usuario UpdateUsuario(Usuario user)
         {
 
             var usuarioDB = (from u in _dbContext.Usuarios
@@ -73,7 +67,7 @@ namespace utnfrsf.ds.orms.Services
 
         }
 
-        public  void DeleteUsuario(int usuarioId)
+        public void DeleteUsuario(int usuarioId)
         {
 
             var usuario = _dbContext.Usuarios.Include(u => u.Domicilios).FirstOrDefault(u => u.Id == usuarioId);
@@ -83,7 +77,7 @@ namespace utnfrsf.ds.orms.Services
 
         }
 
-        public  void ConsultasVariasUsuario()
+        public void ConsultasVariasUsuario()
         {
 
             var consulta1 = (from u in _dbContext.Usuarios

@@ -1,7 +1,7 @@
 ﻿using FluentNHibernate.Mapping;
 using utnfrsf.ds.orms.Entidades;
 
-namespace utnfrsf.ds.orms.NHibernate
+namespace utnfrsf.ds.orms.NHibernateHelper
 {
     public class DomicilioMap : ClassMap<Domicilio>
     {
@@ -13,7 +13,9 @@ namespace utnfrsf.ds.orms.NHibernate
             Map(x => x.Calle).Column("calle").Length(100).Not.Nullable();
             Map(x => x.Numero).Column("numero").Not.Nullable();
 
-            References(x => x.Usuario, "usuarioid").Cascade.None();
+            References(x => x.Usuario)
+                .Column("usuarioid")
+                .Cascade.None();
         }
     }
 }

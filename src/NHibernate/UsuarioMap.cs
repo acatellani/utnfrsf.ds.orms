@@ -1,7 +1,7 @@
 ﻿using FluentNHibernate.Mapping;
 using utnfrsf.ds.orms.Entidades;
 
-namespace utnfrsf.ds.orms.NHibernate
+namespace utnfrsf.ds.orms.NHibernateHelper
 {
     public class UsuarioMap : ClassMap<Usuario>
     {
@@ -16,7 +16,8 @@ namespace utnfrsf.ds.orms.NHibernate
 
             HasMany(x => x.Domicilios)
                 .Cascade.All()
-                .Inverse();
+                //.Inverse()
+                .KeyColumn("usuarioid");
         }
     }
 }

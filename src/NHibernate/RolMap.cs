@@ -1,7 +1,7 @@
 ﻿using FluentNHibernate.Mapping;
 using utnfrsf.ds.orms.Entidades;
 
-namespace utnfrsf.ds.orms.NHibernate
+namespace utnfrsf.ds.orms.NHibernateHelper
 {
     public class RolMap : ClassMap<Rol>
     {

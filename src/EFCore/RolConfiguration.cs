@@ -22,7 +22,7 @@ namespace utnfrsf.ds.orms.EFCore
             builder.HasMany(r => r.Usuarios)
                    .WithOne(u => u.Rol)
                    .OnDelete(DeleteBehavior.SetNull);
-                   
+
         }
     }
 }

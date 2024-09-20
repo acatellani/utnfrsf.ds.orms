@@ -14,7 +14,7 @@ namespace utnfrsf.ds.orms.Entidades
             var result = new StringBuilder();
             result.AppendLine($"Id: {Id}");
             result.AppendLine($"Calle: {Calle}");
-            result.AppendLine($"Número: {Numero}");          
+            result.AppendLine($"Número: {Numero}");
 
             return result.ToString();
         }
